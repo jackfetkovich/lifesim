@@ -9,17 +9,17 @@ public class Person {
     private int accountBalance;
     private int salary;
 
-    public Person(String name, int age, Gender gender, String job, int accountBalance, int salary) {
-        this.name = name;
+    public Person(int age, Gender gender, String job, int accountBalance, int salary) {
         this.age = age;
         this.gender = gender;
         this.job = job;
         this.accountBalance = accountBalance;
         this.salary = salary;
+        this.setName(RandomNameGenerator.randomName(gender));
     }
 
-    public Person(String name) {
-        this(name, 0, generateGender() ? Gender.MALE : Gender.FEMALE, "none", 0, 0 );
+    public Person() {
+        this(0, generateGender() ? Gender.MALE : Gender.FEMALE, "none", 0, 0 );
     }
 
     public void setJob(String job) {
@@ -32,6 +32,10 @@ public class Person {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    private void setName(String name){
+        this.name = name;
     }
 
     public String getName() {
